@@ -25,6 +25,11 @@ public class SpringDataMessageService implements MessageService {
     }
 
     @Override
+    public void saveBatch(Collection<MessageEntity> entities) {
+        repository.saveAll(entities);
+    }
+
+    @Override
     public void clear() {
         repository.deleteAll();
 //        repository.truncateTable();

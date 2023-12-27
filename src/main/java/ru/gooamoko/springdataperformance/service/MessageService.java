@@ -16,6 +16,13 @@ public interface MessageService {
     void save(MessageEntity entity);
 
     /**
+     * Сохраняет несколько сообщений в БД.
+     *
+     * @param entities коллекция сообщений.
+     */
+    void saveBatch(Collection<MessageEntity> entities);
+
+    /**
      * Удаляет все сообщения в БД.
      */
     void clear();

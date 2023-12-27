@@ -27,6 +27,13 @@ public class EntityManagerRepository {
     }
 
     @Transactional
+    public void saveAll(Collection<MessageEntity> entities) {
+        for (MessageEntity entity : entities) {
+            entityManager.persist(entity);
+        }
+    }
+
+    @Transactional
     public void deleteAll() {
         entityManager.createNativeQuery("truncate table messages").executeUpdate();
     }

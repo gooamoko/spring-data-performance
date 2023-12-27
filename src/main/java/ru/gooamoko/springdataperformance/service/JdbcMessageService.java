@@ -2,20 +2,17 @@ package ru.gooamoko.springdataperformance.service;
 
 import org.springframework.stereotype.Service;
 import ru.gooamoko.springdataperformance.entity.MessageEntity;
-import ru.gooamoko.springdataperformance.repository.EntityManagerRepository;
+import ru.gooamoko.springdataperformance.repository.JdbcMessageRepository;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Сервис для работы с сообщениями на основе Entity Manager.
- */
 @Service
-public class EntityManagerMessageService implements MessageService {
-    private final EntityManagerRepository repository;
+public class JdbcMessageService implements MessageService {
+    private final JdbcMessageRepository repository;
 
-    public EntityManagerMessageService(EntityManagerRepository repository) {
+    public JdbcMessageService(JdbcMessageRepository repository) {
         this.repository = repository;
     }
 
@@ -31,7 +28,7 @@ public class EntityManagerMessageService implements MessageService {
 
     @Override
     public void clear() {
-        repository.deleteAll();
+        repository.truncateTable();
     }
 
     @Override
